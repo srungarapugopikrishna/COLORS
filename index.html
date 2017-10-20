@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The List Of Colots</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+</style>
+
+<script>
+      $(function() {
+        $.getJSON('data.json', function(data) {
+          count = 1
+             $.each(data.data, function(i, f) {
+
+                var tblRow =  "<tr>" +
+                                "<th scope=\"row\">"+count+"</th>" +
+                                  "<td bgcolor="+f.code+"></td>" +
+                                  "<td><a href=\"colorPage.html?code="+f.code.slice(1)+"\">"+f.color+"</a></td>" +
+                                  "<td>"+f.code+"</td>" +
+                              "</tr>"
+                count = count +1
+                 $(tblRow).appendTo("#colors tbody");
+            });
+             
+        });
+      });
+    </script>
+</head>
+<body>
+
+<div class="bs-example">
+    <table class="table table-striped" id = "colors">
+        <thead>
+            <tr>
+                <th>Row</th>
+                <th>Color</th>
+                <th>Name</th>
+                <th>Code</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>                            

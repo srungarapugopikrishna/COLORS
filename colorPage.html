@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+ 	    <meta charset="UTF-8"> 
+		<script>
+			function set_bgcolor() {
+				var color = get_color('code');
+			    document.body.style.backgroundColor = color;
+			}
+			function goBack() {
+			    window.history.back()
+			}
+			function get_color(code){
+			    var sPageURL = window.location.search.substring(1);
+			    var sURLVariables = sPageURL.split('&');
+			    for (var i = 0; i < sURLVariables.length; i++) 
+				    {
+				        var sParameterName = sURLVariables[i].split('=');
+				        if (sParameterName[0] == code) 
+				        {
+				            return "#"+sParameterName[1];
+				        }
+				    }
+			}
+		</script>
+	</head>
+<body onload="set_bgcolor()">
+<button onclick="goBack()">HOME</button>
+</body>
+</html>
